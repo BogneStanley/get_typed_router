@@ -54,6 +54,8 @@ class $routeClassName extends $_routeContractClassName {
   @override
   final String path = '${r.routeName}';
 
+  static final String route = '${r.routeName}';
+
   @override
   $argsLine
 

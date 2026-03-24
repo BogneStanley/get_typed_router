@@ -54,3 +54,7 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/to/font-from-package
+
+executables:
+  get_typed_router:
+    main: bin/get_typed_router.dart
