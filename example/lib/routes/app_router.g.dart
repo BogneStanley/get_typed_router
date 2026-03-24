@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:example/home/home_page.dart';
+import 'package:example/home/home_controller.dart';
 import 'package:example/main.dart';
 
 sealed class RouteContract {
@@ -12,11 +14,13 @@ class MyHomePageRoute extends RouteContract {
   @override
   final String path = '/home';
 
+  static final String route = '/home';
+
   @override
   final HomeArgs args;
 
   @override
-  final Bindings? binding = null;
+  final Bindings? binding = HomeBinding();
 
   MyHomePageRoute({required this.args});
 }
@@ -42,7 +46,7 @@ class AppRouter {
     GetPage(
       name: '/home',
       page: () => MyHomePage(),
-      binding: null,
+      binding: HomeBinding(),
     ),
 
     GetPage(
