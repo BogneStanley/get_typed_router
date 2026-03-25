@@ -8,6 +8,7 @@ version: 0.0.1
 homepage: https://github.com/BogneStanley/get_typed_router
 repository: https://github.com/BogneStanley/get_typed_router
 issue_tracker: https://github.com/BogneStanley/get_typed_router/issues
+documentation: https://github.com/BogneStanley/get_typed_router#readme
 
 topics:
   - getx
@@ -15,6 +16,14 @@ topics:
   - code-generation
   - navigation
   - type-safe
+
+platforms:
+  android:
+  ios:
+  linux:
+  macos:
+  web:
+  windows:
 
 environment:
   sdk: ^3.8.1
