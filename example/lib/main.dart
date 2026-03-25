@@ -25,10 +25,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
-@AppRoute<String>(
-  path: '/second',
-)
+@AppRoute<String>(path: '/second')
 class SecondPage extends StatelessWidget {
   const SecondPage({super.key});
 
@@ -37,9 +34,7 @@ class SecondPage extends StatelessWidget {
     final message = AppRouter.getArgs<String>();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Second Page'),
-      ),
+      appBar: AppBar(title: const Text('Second Page')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +42,11 @@ class SecondPage extends StatelessWidget {
             Text('Received message: $message'),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () => AppRouter.offAllNamed(MyHomePageRoute(args: HomeArgs(title: 'Message from Second Page'))),
+              onPressed: () => AppRouter.offAllNamed(
+                MyHomePageRoute(
+                  args: HomeArgs(title: 'Message from Second Page'),
+                ),
+              ),
               child: const Text('Go Back'),
             ),
           ],

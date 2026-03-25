@@ -1,8 +1,8 @@
 /// AppRoute annotation for generating GetX routes.
-/// 
+///
 /// This annotation should be placed above a page class to provide metadata
 /// for code generation.
-/// 
+///
 /// Example usage:
 /// ```dart
 /// @AppRoute<HomeArgs>(
@@ -28,8 +28,5 @@ class AppRoute<TArgs> {
   /// ```dart
   /// AppRouter.to(HomePageRoute(arg: HomeArgs(...)));
   /// ```
-  const AppRoute({
-    required this.path,
-    this.binding,
-  });
+  const AppRoute({required this.path, this.binding});
 }

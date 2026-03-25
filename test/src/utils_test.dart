@@ -11,12 +11,11 @@ void main() {
     } catch (_) {}
   });
 
-
   group('toImportPath', () {
     test('should convert path correctly on Windows/Unix style', () {
       final path = p.join('lib', 'pages', 'home.dart');
       final expected = 'package:${globals.projectName}/pages/home.dart';
-      
+
       expect(toImportPath(path), expected);
     });
 

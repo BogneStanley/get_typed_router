@@ -10,15 +10,14 @@ RouteConfig _config({
   String? argsType,
   String? bindingType,
   String? bindingImport,
-}) =>
-    RouteConfig(
-      pageName: pageName,
-      routeName: routeName,
-      pageImport: pageImport,
-      argsType: argsType,
-      bindingType: bindingType,
-      bindingImport: bindingImport,
-    );
+}) => RouteConfig(
+  pageName: pageName,
+  routeName: routeName,
+  pageImport: pageImport,
+  argsType: argsType,
+  bindingType: bindingType,
+  bindingImport: bindingImport,
+);
 
 // Reads the generated file after calling generateRouterFile
 String _readGeneratedFile() {
@@ -118,9 +117,7 @@ void main() {
     });
 
     test('should use provided argsType', () {
-      generateRouterFile([
-        _config(argsType: 'DashboardArgs'),
-      ]);
+      generateRouterFile([_config(argsType: 'DashboardArgs')]);
       final content = _readGeneratedFile();
 
       expect(content, contains('final DashboardArgs args'));
@@ -208,7 +205,10 @@ void main() {
       final content = _readGeneratedFile();
 
       expect(content, contains('static T getArgs<T>()'));
-      expect(content, contains("throw Exception('No arguments found for route')"));
+      expect(
+        content,
+        contains("throw Exception('No arguments found for route')"),
+      );
       expect(content, contains('Invalid argument type'));
     });
 

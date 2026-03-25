@@ -10,10 +10,10 @@ CompilationUnit _parseFile(File file) {
 }
 
 /// Find import for a type.
-/// 
+///
 /// It searches all the files in the lib directory and returns the import path
 /// of the file that contains the type.
-/// 
+///
 /// Example:
 /// we have a file lib/pages/home_page.dart and we want to find the import path of HomePage
 /// ```dart
@@ -26,9 +26,9 @@ String? findImportForType(String typeName) {
   for (final file in files) {
     final unit = _parseFile(file);
 
-    final found = unit.declarations
-        .whereType<ClassDeclaration>()
-        .any((c) => c.name.lexeme == typeName);
+    final found = unit.declarations.whereType<ClassDeclaration>().any(
+      (c) => c.name.lexeme == typeName,
+    );
 
     if (found) {
       return toImportPath(file.path);

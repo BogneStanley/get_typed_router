@@ -25,7 +25,7 @@ All contributions are welcome — bug fixes, new features, tests, and documentat
 ### 1. Fork and clone the repository
 
 ```sh
-git clone https://github.com/BogneStanley/get_typed_router.git
+git clone https://github.com/{your-username}/get_typed_router.git
 cd get_typed_router
 ```
 
@@ -327,4 +327,4 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be repor
 
 ---
 
-Thank you for helping make `get_typed_router` better!
+Thank you for helping make `get_typed_router` better! ❤️🎉

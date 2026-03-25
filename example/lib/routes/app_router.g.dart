@@ -9,7 +9,6 @@ sealed class RouteContract {
   Bindings? get binding;
 }
 
-
 class MyHomePageRoute extends RouteContract {
   @override
   final String path = '/home';
@@ -40,48 +39,26 @@ class SecondPageRoute extends RouteContract {
   SecondPageRoute({required this.args});
 }
 
-
 class AppRouter {
   static final pages = <GetPage>[
-    GetPage(
-      name: '/home',
-      page: () => MyHomePage(),
-      binding: HomeBinding(),
-    ),
+    GetPage(name: '/home', page: () => MyHomePage(), binding: HomeBinding()),
 
-    GetPage(
-      name: '/second',
-      page: () => SecondPage(),
-      binding: null,
-    ),
-
+    GetPage(name: '/second', page: () => SecondPage(), binding: null),
   ];
   static Future<T?> to<T>(RouteContract route) async {
-    return await Get.toNamed(
-      route.path,
-      arguments: route.args,
-    );
+    return await Get.toNamed(route.path, arguments: route.args);
   }
 
   static Future<T?> offNamed<T>(RouteContract route) async {
-    return await Get.offNamed(
-      route.path,
-      arguments: route.args,
-    );
+    return await Get.offNamed(route.path, arguments: route.args);
   }
 
   static Future<T?> offAllNamed<T>(RouteContract route) async {
-    return await Get.offAllNamed(
-      route.path,
-      arguments: route.args,
-    );
+    return await Get.offAllNamed(route.path, arguments: route.args);
   }
 
   static Future<T?> offAndToNamed<T>(RouteContract route) async {
-    return await Get.offAndToNamed(
-      route.path,
-      arguments: route.args,
-    );
+    return await Get.offAndToNamed(route.path, arguments: route.args);
   }
 
   static T getArgs<T>() {
@@ -97,6 +74,4 @@ class AppRouter {
 
     return args;
   }
-
 }
-

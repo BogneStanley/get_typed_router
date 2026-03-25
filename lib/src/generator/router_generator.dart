@@ -6,9 +6,7 @@ const _routeContractClassName = 'RouteContract';
 void generateRouterFile(List<RouteConfig> routes) {
   final buffer = StringBuffer();
 
-  final imports = <String>{
-    "import 'package:get/get.dart';",
-  };
+  final imports = <String>{"import 'package:get/get.dart';"};
 
   for (final r in routes) {
     imports.add("import '${r.pageImport}';");
@@ -43,11 +41,12 @@ void generateRouterFile(List<RouteConfig> routes) {
 String _generateRouteClass(RouteConfig r) {
   final routeClassName = "${r.pageName}Route";
 
-  final argsLine = r.argsType != null ? 'final ${r.argsType} args;' : 'final dynamic args = null;';
+  final argsLine = r.argsType != null
+      ? 'final ${r.argsType} args;'
+      : 'final dynamic args = null;';
   final argsInit = r.argsType != null ? '{required this.args}' : '';
 
-  final bindingInit =
-      r.bindingType != null ? '${r.bindingType}()' : 'null';
+  final bindingInit = r.bindingType != null ? '${r.bindingType}()' : 'null';
 
   return '''
 class $routeClassName extends $_routeContractClassName {
@@ -68,8 +67,7 @@ class $routeClassName extends $_routeContractClassName {
 }
 
 String _generateGetPage(RouteConfig r) {
-  final bindingInit =
-      r.bindingType != null ? '${r.bindingType}()' : 'null';
+  final bindingInit = r.bindingType != null ? '${r.bindingType}()' : 'null';
 
   return '''
     GetPage(

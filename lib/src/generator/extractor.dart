@@ -6,7 +6,6 @@ import 'package:get_typed_router/src/utils.dart';
 import 'route_config.dart';
 import 'import_resolver.dart';
 
-
 CompilationUnit _parseFile(File file) {
   final content = file.readAsStringSync();
   final result = parseString(content: content);
@@ -14,10 +13,10 @@ CompilationUnit _parseFile(File file) {
 }
 
 /// Extract routes from a file.
-/// 
+///
 /// It searches all the files in the lib directory and returns the routes
 /// found in the file.
-/// 
+///
 /// Example:
 /// ```dart
 /// extractRoutes(File('lib/pages/home_page.dart'));
@@ -28,8 +27,7 @@ List<RouteConfig> extractRoutes(File file) {
   final routes = <RouteConfig>[];
 
   for (final clazz in unit.declarations.whereType<ClassDeclaration>()) {
-    final annotations =
-        clazz.metadata.where((a) => a.name.name == 'AppRoute');
+    final annotations = clazz.metadata.where((a) => a.name.name == 'AppRoute');
 
     if (annotations.isEmpty) continue;
 
@@ -41,27 +39,30 @@ List<RouteConfig> extractRoutes(File file) {
     final bindingType = _extractBinding(annotation);
 
     final pageImport = toImportPath(file.path);
-    final bindingImport =
-        bindingType != null ? findImportForType(bindingType) : null;
+    final bindingImport = bindingType != null
+        ? findImportForType(bindingType)
+        : null;
 
-    routes.add(RouteConfig(
-      pageName: pageName,
-      routeName: routeName,
-      argsType: argsType,
-      bindingType: bindingType,
-      pageImport: pageImport,
-      bindingImport: bindingImport,
-    ));
+    routes.add(
+      RouteConfig(
+        pageName: pageName,
+        routeName: routeName,
+        argsType: argsType,
+        bindingType: bindingType,
+        pageImport: pageImport,
+        bindingImport: bindingImport,
+      ),
+    );
   }
 
   return routes;
 }
 
 /// Extract route name from an annotation.
-/// 
+///
 /// It searches for the 'path' argument in the annotation and returns its value.
 /// If the 'path' argument is not found, it returns the lowercase version of the fallback string.
-/// 
+///
 /// Example:
 /// ```dart
 /// _extractRouteName(annotation, 'HomePage');

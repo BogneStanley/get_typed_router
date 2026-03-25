@@ -25,21 +25,16 @@ void main() {
 
   group('extractRoutes', () {
     test('should return empty list for a file with no @AppRoute', () {
-      final file = _createTempFile(
-        'no_annotation',
-        '''
+      final file = _createTempFile('no_annotation', '''
 class SomePage {}
-''',
-      );
+''');
 
       final routes = extractRoutes(file);
       expect(routes, isEmpty);
     });
 
     test('should extract route with path', () {
-      final file = _createTempFile(
-        'with_annotation',
-        '''
+      final file = _createTempFile('with_annotation', '''
 import 'package:flutter/material.dart';
 import 'package:get_typed_router/src/annotations/app_route.dart';
 
@@ -49,8 +44,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => const Placeholder();
 }
-''',
-      );
+''');
 
       final routes = extractRoutes(file);
 
@@ -60,9 +54,7 @@ class HomePage extends StatelessWidget {
     });
 
     test('should extract argsType from generic type argument', () {
-      final file = _createTempFile(
-        'with_args',
-        '''
+      final file = _createTempFile('with_args', '''
 import 'package:flutter/material.dart';
 import 'package:get_typed_router/src/annotations/app_route.dart';
 
@@ -74,8 +66,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => const Placeholder();
 }
-''',
-      );
+''');
 
       final routes = extractRoutes(file);
 
@@ -83,9 +74,7 @@ class HomePage extends StatelessWidget {
     });
 
     test('should extract binding type', () {
-      final file = _createTempFile(
-        'with_binding',
-        '''
+      final file = _createTempFile('with_binding', '''
 import 'package:flutter/material.dart';
 import 'package:get_typed_router/src/annotations/app_route.dart';
 
@@ -98,8 +87,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => const Placeholder();
 }
-''',
-      );
+''');
 
       final routes = extractRoutes(file);
 
@@ -107,9 +95,7 @@ class HomePage extends StatelessWidget {
     });
 
     test('should return null argsType when no generic type is provided', () {
-      final file = _createTempFile(
-        'no_args',
-        '''
+      final file = _createTempFile('no_args', '''
 import 'package:flutter/material.dart';
 import 'package:get_typed_router/src/annotations/app_route.dart';
 
@@ -119,8 +105,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => const Placeholder();
 }
-''',
-      );
+''');
 
       final routes = extractRoutes(file);
 
@@ -128,9 +113,7 @@ class SplashPage extends StatelessWidget {
     });
 
     test('should extract multiple routes from a single file', () {
-      final file = _createTempFile(
-        'multi_routes',
-        '''
+      final file = _createTempFile('multi_routes', '''
 import 'package:flutter/material.dart';
 import 'package:get_typed_router/src/annotations/app_route.dart';
 
@@ -147,19 +130,19 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => const Placeholder();
 }
-''',
-      );
+''');
 
       final routes = extractRoutes(file);
 
       expect(routes.length, 2);
-      expect(routes.map((r) => r.routeName), containsAll(['/home', '/profile']));
+      expect(
+        routes.map((r) => r.routeName),
+        containsAll(['/home', '/profile']),
+      );
     });
 
     test('should include pageImport derived from the file path', () {
-      final file = _createTempFile(
-        'import_check',
-        '''
+      final file = _createTempFile('import_check', '''
 import 'package:get_typed_router/src/annotations/app_route.dart';
 import 'package:flutter/material.dart';
 
@@ -169,8 +152,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => const Placeholder();
 }
-''',
-      );
+''');
 
       final routes = extractRoutes(file);
 
