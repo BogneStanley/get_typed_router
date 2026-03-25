@@ -45,4 +45,3 @@ flutter:
 
 executables:
   get_typed_router:
-    main: bin/get_typed_router.dart
